@@ -19,6 +19,7 @@ if [ "$DATATXTYPE" = "$MAXLIMTYPE" ]; then
                 echo "WARNING TX bytes bandwidth limit hit!"
                 tc qdisc add dev $INTERFACE root tbf rate 1mbit burst 1kb
         fi
+        
         if [ $(bc <<< "$DATAALL >= $MAXALL") -eq 1 ]; then
                 echo "WARNING TX and RX bytes bandwidth limit hit!"
                 tc qdisc add dev $INTERFACE root tbf rate 1mbit burst 1kb
