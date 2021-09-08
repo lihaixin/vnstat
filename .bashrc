@@ -13,12 +13,14 @@ alias mv='mv -i'
 alias h='cd ~;clear;'
 alias speed='time curl -o /dev/null http://cachefly.cachefly.net/10mb.test'
 alias cancel_limit='tc qdisc del dev $INTERFACE root tbf rate 1mbit burst 1kb latency 60ms'
+alias view_limit='tc qdisc show dev $INTERFACE'
 . /etc/os-release
 
 echo -e -n '\E[1;34m'
 figlet -w 120 "VNSTAT"
 echo "#查看每月流量 输入 <vnstat -m> "
 echo "#查看每日流量 输入 <vnstat -d> "
+echo "#查看带宽限制 输入 <view_limit> "
 echo "#取消带宽限制 输入 <cancel_limit> "
 echo "#测试速度 输入 <speed> "
 echo -e -n '\E[1;34m'
