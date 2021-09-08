@@ -17,6 +17,7 @@ ENV RATE_UNIT=1
 ENV PAGE_REFRESH=0
 
 RUN apk add --no-cache perl gd sqlite-libs lighttpd tini iproute2 \
+ && ln -s /usr/lib/tc /lib/tc \
  && apk add --no-cache --virtual TMP gcc pkgconf gd-dev make musl-dev sqlite-dev linux-headers git \
  && git clone --depth 1 https://github.com/vergoh/vnstat \
  && cd vnstat/ \
