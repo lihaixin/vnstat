@@ -1,6 +1,9 @@
-FROM alpine:3.7
+FROM vergoh/vnstat
 MAINTAINER Lee <noreply@lihaixin.name>
-LABEL CLASS NET
+
+MAXTX="950.50"
+MAXALL="1000"
+MAXLIMTYPE="GiB"
 
 
 RUN set -ex \
