@@ -17,11 +17,11 @@ DATATXTYPE=`echo $VNSTAT | cut -d ";" -f 10 | cut -d " " -f 2`
 if [ "$DATATXTYPE" = "$MAXLIMTYPE" ]; then
         if [ $(bc <<< "$DATATX >= $MAXTX") -eq 1 ]; then
                 echo "WARNING TX bytes bandwidth limit hit!"
-                tc qdisc add dev $INTERFACE root tbf rate 1mbit burst 1kb
+                tc qdisc add dev $INTERFACE root tbf rate 1mbit burst 1kb latency 60ms
         fi
         
         if [ $(bc <<< "$DATAALL >= $MAXALL") -eq 1 ]; then
                 echo "WARNING TX and RX bytes bandwidth limit hit!"
-                tc qdisc add dev $INTERFACE root tbf rate 1mbit burst 1kb
+                tc qdisc add dev $INTERFACE root tbf rate 1mbit burst 1kb latency 60ms
         fi
 fi
