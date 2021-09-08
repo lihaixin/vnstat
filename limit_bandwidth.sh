@@ -1,9 +1,6 @@
 #!/bin/sh
 # limits are GiB or TiB
 
-MAXTX="950.50"
-MAXALL="1000"
-MAXLIMTYPE="GiB"
 INTERFACE=`ip route | grep "default via" |awk '{ print $5}'`
 # is vnstatd running?
 
