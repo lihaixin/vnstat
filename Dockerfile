@@ -39,7 +39,8 @@ EXPOSE ${HTTP_PORT}
 
 
 COPY favicon.ico /var/www/localhost/htdocs/favicon.ico
-ADD ./.bashrc /root/.bashrc 
+ADD ./.bashrc /root/.bashrc
+COPY vnstat.limit.bandwidth.sh /vnstat.limit.bandwidth.sh
 COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+RUN chmod +x /entrypoint.sh /vnstat.limit.bandwidth.sh
 ENTRYPOINT ["/entrypoint.sh"]
