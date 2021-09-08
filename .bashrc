@@ -12,8 +12,8 @@ alias rm='rm -i'
 alias mv='mv -i'
 alias h='cd ~;clear;'
 alias speed='time curl -o /dev/null http://cachefly.cachefly.net/10mb.test'
-alias cancel_limit='tc qdisc del dev $INTERFACE root tbf rate 1mbit burst 1kb latency 60ms'
-alias view_limit='tc qdisc show dev $INTERFACE'
+alias cancel_limit='tc qdisc del dev $INTERFACE root tbf rate 1mbit burst 2kb latency 50ms'
+alias view_limit='tc qdisc show dev $INTERFACE && tc -s qdisc ls dev $INTERFACE'
 . /etc/os-release
 
 echo -e -n '\E[1;34m'
