@@ -18,19 +18,19 @@ if [ ! -f /tmp/limit ]; then
    if [ "$DATATXTYPE" = "$MAXLIMTYPE" ]; then
         if [ $(bc <<< "$DATATX >= $MAXTX") -eq 1 ]; then
                 echo "WARNING TX bytes bandwidth limit hit!"
-                tc qdisc add dev $INTERFACE root tbf rate 1mbit burst 2kb latency 50ms
+                tc qdisc add dev $INTERFACE root tbf rate $RATE burst $BURST latency $LATENCY
                 touch /tmp/limit
         fi
         
         if [ $(bc <<< "$DATAALL >= $MAXALL") -eq 1 ]; then
                 echo "WARNING TX and RX bytes bandwidth limit hit!"
-                tc qdisc add dev $INTERFACE root tbf rate 1mbit burst 2kb latency 50ms
+                tc qdisc add dev $INTERFACE root tbf rate $RATE burst $BURST latency $LATENCY
                 touch /tmp/limit
         fi
    fi
 fi
 
 if [ `date +%d` = 01 ]; then
-        tc qdisc del dev $INTERFACE root tbf rate 1mbit burst 2kb latency 50ms
+        tc qdisc del dev $INTERFACE root tbf rate $RATE burst $BURST latency $LATENCY
         rm -rf /tmp/limit
 fi
