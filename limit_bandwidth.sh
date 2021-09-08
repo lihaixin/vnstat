@@ -14,7 +14,7 @@ DATAALL=`echo $VNSTAT | cut -d ";" -f 11 | cut -d " " -f 1`
 DATATXTYPE=`echo $VNSTAT | cut -d ";" -f 10 | cut -d " " -f 2`
 
 # 超过流量总量,限速到1m,月初重置
-if [ ! -f /tmp/limit]; then
+if [ ! -f /tmp/limit ]; then
    if [ "$DATATXTYPE" = "$MAXLIMTYPE" ]; then
         if [ $(bc <<< "$DATATX >= $MAXTX") -eq 1 ]; then
                 echo "WARNING TX bytes bandwidth limit hit!"
@@ -30,7 +30,7 @@ if [ ! -f /tmp/limit]; then
    fi
 fi
 
-if [`date +%d` = 01 ]; then
+if [ `date +%d` = 01 ]; then
         tc qdisc del dev $INTERFACE root tbf rate 1mbit burst 1kb latency 60ms
         rm -rf /tmp/limit
 fi
