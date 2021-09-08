@@ -1,9 +1,9 @@
 FROM vergoh/vnstat
 MAINTAINER Lee <noreply@lihaixin.name>
 
-MAXTX="950.50"
-MAXALL="1000"
-MAXLIMTYPE="GiB"
+ENV MAXTX="950.50"
+ENV MAXALL="1000"
+ENV MAXLIMTYPE="GiB"
 
 
 RUN set -ex \
