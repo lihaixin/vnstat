@@ -17,7 +17,7 @@ ENV CACHE_TIME=1
 ENV RATE_UNIT=1
 ENV PAGE_REFRESH=0
 
-RUN apk add --no-cache perl gd sqlite-libs lighttpd \
+RUN apk add --no-cache perl gd sqlite-libs lighttpd tini iptables \
  && apk add --no-cache --virtual TMP gcc pkgconf gd-dev make musl-dev sqlite-dev linux-headers git \
  && git clone --depth 1 https://github.com/vergoh/vnstat \
  && cd vnstat/ \
@@ -29,6 +29,10 @@ RUN apk add --no-cache perl gd sqlite-libs lighttpd \
  && rm -fr vnstat* \
  && apk del TMP \
  && addgroup -S vnstat && adduser -S -h /var/lib/vnstat -s /sbin/nologin -g vnStat -D -H -G vnstat vnstat
+ 
+RUN echo '0 1 * * * bash /etc/vnstat.limit.bandwidth.sh >/etc/vnstat.log 2>&1' >>/var/spool/cron/crontabs/root \
+ && chown root:cron /var/spool/cron/crontabs/root \
+ && chmod 600 /var/spool/cron/crontabs/root
 
 VOLUME /var/lib/vnstat
 EXPOSE ${HTTP_PORT}
