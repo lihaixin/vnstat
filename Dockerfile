@@ -7,6 +7,9 @@ LABEL repository.reference.docker="https://hub.docker.com/r/vergoh/vnstat"
 ENV MAXTX="950"
 ENV MAXALL="1000"
 ENV MAXLIMTYPE="GiB"
+ENV RATE 1mbit
+ENV BURST 2kb
+ENV LATENCY 50ms
 
 ENV HTTP_PORT=8586
 ENV HTTP_BIND=*
