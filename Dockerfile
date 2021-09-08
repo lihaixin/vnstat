@@ -4,7 +4,7 @@ LABEL author="Teemu Toivola and sanjin"
 LABEL repository.reference.git="https://github.com/vergoh/vnstat-docker"
 LABEL repository.reference.docker="https://hub.docker.com/r/vergoh/vnstat"
 
-ENV MAXTX="950.50"
+ENV MAXTX="950"
 ENV MAXALL="1000"
 ENV MAXLIMTYPE="GiB"
 
