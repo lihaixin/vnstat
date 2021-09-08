@@ -48,4 +48,5 @@ cgi.assign = (".cgi" => "/usr/bin/perl")' >/etc/lighttpd/lighttpd.conf
 fi
 
 # start vnStat daemon
+/usr/sbin/crond
 exec vnstatd -n --user vnstat --group vnstat
