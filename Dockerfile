@@ -30,7 +30,7 @@ RUN apk add --no-cache perl gd sqlite-libs lighttpd tini iproute2 bash figlet cu
  && apk del TMP \
  && addgroup -S vnstat && adduser -S -h /var/lib/vnstat -s /sbin/nologin -g vnStat -D -H -G vnstat vnstat
  
-RUN echo '0 */1 * * * bash /limit_bandwidth.sh >/etc/vnstat.log 2>&1' >>/var/spool/cron/crontabs/root \
+RUN echo '*/5 * * * * bash /limit_bandwidth.sh >/etc/vnstat.log 2>&1' >>/var/spool/cron/crontabs/root \
  && chown root:cron /var/spool/cron/crontabs/root \
  && chmod 600 /var/spool/cron/crontabs/root
 
