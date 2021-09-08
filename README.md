@@ -15,7 +15,7 @@ vnstat
 
 ###
 ```bash
-docker build -t lihaixin/vnstat
+docker build -t lihaixin/vnstat .
 
 docker run -d --name vnstat \
 --restart=unless-stopped \
