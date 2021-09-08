@@ -24,13 +24,13 @@ if [ ! -f /tmp/limit ]; then
         
         if [ $(bc <<< "$DATAALL >= $MAXALL") -eq 1 ]; then
                 echo "WARNING TX and RX bytes bandwidth limit hit!"
-                tc qdisc add dev $INTERFACE root tbf rate 1mbit burst 1kb latency 60ms
+                tc qdisc add dev $INTERFACE root tbf rate 1mbit burst 100kb latency 60ms
                 touch /tmp/limit
         fi
    fi
 fi
 
 if [ `date +%d` = 01 ]; then
-        tc qdisc del dev $INTERFACE root tbf rate 1mbit burst 1kb latency 60ms
+        tc qdisc del dev $INTERFACE root tbf rate 1mbit burst 100kb latency 60ms
         rm -rf /tmp/limit
 fi
