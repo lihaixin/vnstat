@@ -21,7 +21,7 @@ RUN apk add --no-cache perl gd sqlite-libs lighttpd tini iproute2 \
  && apk add --no-cache --virtual TMP gcc pkgconf gd-dev make musl-dev sqlite-dev linux-headers git \
  && git clone --depth 1 https://github.com/vergoh/vnstat \
  && cd vnstat/ \
- && ./configure --prefix=/usr --sysconfdir=/etc \
+ && ./configure --prefix=/usr --sysconfdir=/etc --disable-dependency-tracking \
  && make && make install \
  && cp -v examples/vnstat.cgi /var/www/localhost/htdocs/index.cgi \
  && cp -v examples/vnstat-json.cgi /var/www/localhost/htdocs/json.cgi \
