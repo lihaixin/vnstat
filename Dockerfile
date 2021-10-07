@@ -3,6 +3,7 @@ FROM alpine:latest
 LABEL author="Teemu Toivola and sanjin"
 LABEL repository.reference.git="https://github.com/vergoh/vnstat-docker"
 LABEL repository.reference.docker="https://hub.docker.com/r/vergoh/vnstat"
+ENV TZ=Asia/Shanghai
 
 ENV MAXTX="950"
 ENV MAXALL="1000"
@@ -19,7 +20,7 @@ ENV CACHE_TIME=1
 ENV RATE_UNIT=1
 ENV PAGE_REFRESH=0
 
-RUN apk add --no-cache perl gd sqlite-libs lighttpd tini iproute2 bash figlet curl \
+RUN apk add --no-cache tzdata ca-certificates perl gd sqlite-libs lighttpd tini iproute2 bash figlet curl \
  && ln -s /usr/lib/tc /lib/tc \
  && apk add --no-cache --virtual TMP gcc pkgconf gd-dev make musl-dev sqlite-dev linux-headers git \
  && git clone --depth 1 https://github.com/vergoh/vnstat \
