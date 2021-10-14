@@ -21,6 +21,12 @@ docker run -d --name vnstat \
 --restart=unless-stopped \
 --net host \
 --privileged \
+-v /etc/localtime:/etc/localtime:ro \
+-v /etc/timezone:/etc/timezone:ro \
+-v vnstatdb:/var/lib/vnstat \
+-e MAXTX=1.8 \
+-e MAXALL=3.5 \
+-e MAXLIMTYPE=TiB \  
 lihaixin/vnstat
 
 docker  exec vnstat bash
