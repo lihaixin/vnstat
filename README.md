@@ -26,7 +26,7 @@ docker run -d --name vnstat \
 -v vnstatdb:/var/lib/vnstat \
 -e MAXTX=1.8 \
 -e MAXALL=3.5 \
--e MAXLIMTYPE=TiB \  
+-e MAXLIMTYPE=TiB \
 lihaixin/vnstat
 
 docker  exec vnstat bash
