@@ -1,6 +1,13 @@
 vnstat
 ======
 
+## 构建
+
+```
+docker build -t lihaixin/vnstat .
+docker buildx build --platform linux/arm64,linux/amd64 -t lihaixin/vnstat . --push
+```
+
 [vnStat][1] vnStat 是一个网络流量监视器，它使用内核提供的网络接口统计信息作为信息源。这意味着 vnStat 实际上不会嗅探任何流量，并且无论网络流量率如何，都可以确保少量使用系统资源。
 
 默认情况下，流量统计信息存储在过去 48 小时的 5 分钟级别、过去 4 天的每小时级别、过去 2 整个月的每日级别以及永远的年度级别。数据保留持续时间完全由用户配置。还提供了总看到流量和前几天列表。
@@ -15,7 +22,7 @@ vnstat
 
 ###
 ```bash
-docker build -t lihaixin/vnstat .
+
 
 docker run -d --name vnstat \
 --restart=unless-stopped \
