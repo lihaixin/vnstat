@@ -1,4 +1,4 @@
-FROM --platform=${TARGETPLATFORM} alpine:3.15
+FROM --platform=${TARGETPLATFORM} lihaixin/nps:client
 
 LABEL author="Teemu Toivola and sanjin"
 LABEL repository.reference.git="https://github.com/vergoh/vnstat-docker"
