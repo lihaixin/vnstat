@@ -52,9 +52,10 @@ echo " # 更多vnstat设置     输入 <vnstat --longhelp> "
 echo " # 查看带宽限制        输入 <view_limit> "
 echo " # 取消带宽限制        输入 <cancel_limit> "
 echo " # 测试主机速度        输入 <speed> "
+echo " # ------------------------------------------------------------------------------------------------ #"
 if [ -f "/etc/member" ]; then
 QQ=`cat /etc/envfile | grep QQ | awk -F "=" '{ print $2}'`
-echo -e "${blue} # 技术支持QQ:${plain}            ${red}$QQ${plain}"
+echo -e "${blue} # 技术支持QQ:${plain} ${red}$QQ${plain}"
 fi
 echo -e -n '\E[1;34m'
 echo -e '\E[0m'
