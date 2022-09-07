@@ -1,4 +1,10 @@
 #!/bin/sh
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH;ntp &
+
+if [ -f "/etc/envfile" ]; then
+export $(grep -v '^#' /etc/envfile | xargs)
+fi
 
 # configure web content
 test ! -z "$SERVER_NAME" && \
