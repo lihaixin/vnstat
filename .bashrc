@@ -43,18 +43,18 @@ if [ "$MEMBER" == "0" ]; then
 echo " # `cat /etc/npsnotice` "
 fi
 fi
-echo " # 查看每月流量 输入 <vnstat -m> "
-echo " # 查看每日流量 输入 <vnstat -d> "
-echo " # 查看5秒实时浏览 输入 <vnstat -tr> "
-echo " # 查看接口列表 输入 <vnstat --iflist> "
-echo " # 删除接口 输入 <vnstat -i docker0 --remove --force> "
-echo " # 更多vnstat设置 输入 <vnstat --longhelp> "
-echo " # 查看带宽限制 输入 <view_limit> "
-echo " # 取消带宽限制 输入 <cancel_limit> "
-echo " # 测试速度 输入 <speed> "
+echo " # 查看每月流量        输入 <vnstat -m> "
+echo " # 查看每日流量        输入 <vnstat -d> "
+echo " # 查看5秒实时浏览     输入 <vnstat -tr> "
+echo " # 查看接口列表        输入 <vnstat --iflist> "
+echo " # 删除Docker接口     输入 <vnstat -i docker0 --remove --force> "
+echo " # 更多vnstat设置     输入 <vnstat --longhelp> "
+echo " # 查看带宽限制        输入 <view_limit> "
+echo " # 取消带宽限制        输入 <cancel_limit> "
+echo " # 测试主机速度        输入 <speed> "
 if [ -f "/etc/member" ]; then
 QQ=`cat /etc/envfile | grep QQ | awk -F "=" '{ print $2}'`
-echo -e "${blue} # 技术支持QQ:${plain}                        ${red}$QQ${plain}"
+echo -e "${blue} # 技术支持QQ:${plain}            ${red}$QQ${plain}"
 fi
 echo -e -n '\E[1;34m'
 echo -e '\E[0m'
