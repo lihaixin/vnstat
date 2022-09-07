@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM --platform=${TARGETPLATFORM} alpine:3.15
 
 LABEL author="Teemu Toivola and sanjin"
 LABEL repository.reference.git="https://github.com/vergoh/vnstat-docker"
