@@ -1,12 +1,11 @@
-vnstat
-======
-
 ## 构建
 
 ```
-docker build -t lihaixin/vnstat .
 docker buildx build --platform linux/arm64,linux/amd64 -t lihaixin/vnstat . --push
 ```
+
+vnstat
+======
 
 [vnStat][1] vnStat 是一个网络流量监视器，它使用内核提供的网络接口统计信息作为信息源。这意味着 vnStat 实际上不会嗅探任何流量，并且无论网络流量率如何，都可以确保少量使用系统资源。
 
@@ -20,9 +19,8 @@ docker buildx build --platform linux/arm64,linux/amd64 -t lihaixin/vnstat . --pu
 4. crond 监控是否超流量
 5. tc 超流量限速度到1m
 
-###
+### CLI 安装
 ```bash
-
 
 docker run -d --name vnstat \
 --restart=unless-stopped \
@@ -41,11 +39,10 @@ docker  exec vnstat bash
 >>> vnstati --help
 >>> exit
 ```
-docker-compose.yml
+### docker-compose.yml
 ```
 version: "3.7"
 services:
-
   vnstat:
     image: lihaixin/vnstat:latest
     container_name: vnstat
