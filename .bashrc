@@ -21,6 +21,7 @@ alias ls='ls -C1 --color'
 alias cp='cp -ip'
 alias rm='rm -i'
 alias mv='mv -i'
+alias tmux='tmux -u'
 alias h='cd ~;clear;'
 alias speed='time curl -o /dev/null http://cachefly.cachefly.net/10mb.test'
 alias cancel_limit='tc qdisc del dev $INTERFACE root tbf rate $RATE burst $BURST latency $LATENCY'
@@ -41,6 +42,8 @@ if [ -f "/etc/member" ]; then
 MEMBER=`cat /etc/member`
 if [ "$MEMBER" == "0" ]; then
 echo " # `cat /etc/npsnotice` "
+else
+echo " # 容器ID： `cat /etc/dockerid` "
 fi
 fi
 echo " # 查看每月流量        输入 <vnstat -m> "
@@ -54,6 +57,7 @@ echo " # 取消带宽限制        输入 <cancel_limit> "
 echo " # 测试主机速度        输入 <speed> "
 echo " # ------------------------------------------------------------------------------------------------ #"
 if [ -f "/etc/member" ]; then
+echo " # "
 QQ=`cat /etc/envfile | grep QQ | awk -F "=" '{ print $2}'`
 echo -e "${blue} # 技术支持QQ:${plain} ${red}$QQ${plain}"
 fi
