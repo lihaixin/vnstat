@@ -30,6 +30,7 @@ docker run -d --name vnstat \
 -v /etc/localtime:/etc/localtime:ro \
 -v /etc/timezone:/etc/timezone:ro \
 -v vnstatdb:/var/lib/vnstat \
+-e QQ=***  \
 -e MAXTX=1.8 \
 -e MAXALL=4.0 \
 -e MAXLIMTYPE=TiB \
@@ -54,6 +55,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - vnstatdb:/var/lib/vnstat
     environment:
+      - QQ=******                               # 终端显示你的联系方式
       - HTTP_PORT=0                             # http服务器端口,或者调整8685，用于0禁用http服务器
       - HTTP_BIND=*                             # 用于绑定http服务器的IP地址，用于127.0.0.1仅绑定到本地主机并防止远程访问
       - HTTP_LOG=/dev/stdout                    # Http服务器日志输出文件，/dev/stdout用于输出到控制台和/dev/null禁用日志记录
