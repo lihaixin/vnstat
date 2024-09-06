@@ -38,14 +38,8 @@ echo " # -----------------------------------------------------------------------
 vnstat -m
 echo ""
 echo " # ------------------------------------------------------------------------------------------------ #"
-if [ -f "/etc/member" ]; then
-MEMBER=`cat /etc/member`
-if [ "$MEMBER" == "0" ]; then
 echo " # `cat /etc/npsnotice` "
-else
 echo " # 容器ID： `cat /etc/dockerid` "
-fi
-fi
 echo " # 查看每月流量        输入 <vnstat -m> "
 echo " # 查看每日流量        输入 <vnstat -d> "
 echo " # 查看5秒实时浏览     输入 <vnstat -tr> "
@@ -56,10 +50,8 @@ echo " # 查看带宽限制        输入 <view_limit> "
 echo " # 取消带宽限制        输入 <cancel_limit> "
 echo " # 测试主机速度        输入 <speed> "
 echo " # ------------------------------------------------------------------------------------------------ #"
-if [ -f "/etc/member" ]; then
-echo " # "
-QQ=`cat /etc/envfile | grep QQ | awk -F "=" '{ print $2}'`
-echo -e "${blue} # 技术支持QQ:${plain} ${red}$QQ${plain}"
+if [ -f "/etc/tty" ]; then
+/usr/bin/tty_server.sh
 fi
 echo -e -n '\E[1;34m'
 echo -e '\E[0m'
