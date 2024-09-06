@@ -1,4 +1,4 @@
-FROM --platform=${TARGETPLATFORM} lihaixin/base:3.15
+FROM --platform=${TARGETPLATFORM} lihaixin/base:3.16
 
 LABEL author="Teemu Toivola and sanjin"
 LABEL repository.reference.git="https://github.com/vergoh/vnstat-docker"
