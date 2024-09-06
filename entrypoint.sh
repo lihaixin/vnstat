@@ -1,6 +1,12 @@
 #!/bin/sh
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
-export PATH;ntp &
+export PATH
+export TERM=xterm-256color
+PREFIX="["
+SUFFIX="]"
+export TIME_FORMAT="${PREFIX}$(date +'%Y-%m-%d %H:%M')${SUFFIX}"
+source /usr/bin/debug_utils.sh
+: ${DEBUG:=1}
 
 if [ -f "/etc/envfile" ]; then
 export $(grep -v '^#' /etc/envfile | xargs)
@@ -54,5 +60,6 @@ cgi.assign = (".cgi" => "/usr/bin/perl")' >/etc/lighttpd/lighttpd.conf
 fi
 
 # start vnStat daemon
+entry || exit 1
 /usr/sbin/crond
 exec vnstatd -n --user vnstat --group vnstat
