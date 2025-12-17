@@ -150,4 +150,23 @@ volumes:
   vnstatdb:
   
 ```
+
+### 批量输出接口
+
+```
+interfaces=$(vnstat --iflist | head -n1 | sed 's/Available interfaces://g' | tr ' ' '\n' | grep -v '^$' | grep -v '^[[:punct:]]')
+
+# 遍历并删除非 wan1 的接口
+for iface in $interfaces; do
+    # 跳过带括号、数字开头、或明显不是接口名的项（可选）
+    if [[ "$iface" == "wan1" ]]; then
+        echo "Keeping: $iface"
+    elif [[ "$iface" =~ ^[a-zA-Z] ]]; then
+        echo "Removing: $iface"
+        vnstat -i "$iface" --remove --force
+    fi
+done
+
+```
+
 [1]: http://humdi.net/vnstat/
